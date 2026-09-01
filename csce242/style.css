@@ -1,21 +1,19 @@
 /* Main portal page styles */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Lato', Arial, sans-serif;
     background-color: #F5EBDD;
     color: #3B2A20;
     margin: 0;
-    padding: 40px 20px;
+    padding: 0;
 }
 
-h1 {
+h1, h2, h3 {
     font-family: 'Playfair Display', Georgia, serif;
-    color: #4B2E1E;
-}
-
-h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    color: #A9642F;
 }
 
 p {
@@ -31,25 +29,113 @@ a:hover {
     color: #7A4A22;
 }
 
-ol {
-    line-height: 1.8;
-}
+/* Header */
 
-#page-content {
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: #FFF8F0;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(75, 46, 30, 0.25);
+#site-header {
+    background-color: #4B2E1E;
+    color: #FFF8F0;
+    padding: 30px 20px;
+    text-align: center;
 }
 
 #author-name {
-    color: #A9642F;
+    margin: 0 0 6px 0;
     font-weight: bold;
-    font-size: 1.2em;
+    color: #E8C9A0;
+}
+
+#site-header h1 {
+    margin: 0;
+    color: #FFF8F0;
+}
+
+/* Main content */
+
+#page-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+#course-desc,
+#repo-link {
+    background-color: #FFF8F0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 14px rgba(75, 46, 30, 0.15);
+    overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 
 #repo-link {
     font-size: 0.95em;
+}
+
+section h2 {
+    color: #A9642F;
+    margin-top: 40px;
+}
+
+/* Flexbox card layout */
+
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: flex-start;
+}
+
+.card {
+    flex: 1 1 260px;
+    max-width: 300px;
+    background-color: #FFF8F0;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 14px rgba(75, 46, 30, 0.2);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #4B2E1E;
+    font-size: 1.1em;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 3px solid #C9A66B;
+    display: block;
+}
+
+.card p {
+    font-size: 0.95em;
+}
+
+.card a {
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* Footer */
+
+#site-footer {
+    background-color: #4B2E1E;
+    color: #E8C9A0;
+    text-align: center;
+    padding: 16px;
+    margin-top: 40px;
+}
+
+/* Stack cards vertically on small screens */
+@media (max-width: 700px) {
+    .card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+        width: 100%;
+    }
 }
