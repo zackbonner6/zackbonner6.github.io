@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 7 - Introduction to JavaScript</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #eef2fb;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    background-color: #ffffff;
+    border: 2px solid #c9d6ef;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0 0 4px 0;
+    color: #2b3a67;
+  }
+  h2 {
+    margin: 0 0 20px 0;
+    color: #7c3aed;
+    font-size: 18px;
+  }
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .column {
+    flex: 1 1 200px;
+    border: 1px solid #c9d6ef;
+    border-radius: 8px;
+    background-color: #f7f9ff;
+    padding: 15px;
+    min-height: 200px;
+    cursor: pointer;
+  }
+  .column h3 {
+    color: #2b3a67;
+  }
+  footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+  }
+
+  /* speech bubble */
+  .speech-bubble {
+    display: none;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 5px 12px;
+    margin: 20px auto;
+    width: fit-content;
+    font-weight: bold;
+  }
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px 8px 0 8px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+  }
+
+  /* beverage */
+  .beverage-result {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4f6df5;
+  }
+
+  /* sticker */
+  .sticker-wrap {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .sticker {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    font-size: 22px;
+  }
+
+  @media (max-width: 640px) {
+    .columns {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Assignment 7</h1>
+  <h2>Introduction to JavaScript</h2>
+
+  <div class="columns">
+    <div class="column" id="speechCol">
+      <h3>Speech</h3>
+      <div class="speech-bubble" id="speechBubble">Hi</div>
+    </div>
+
+    <div class="column">
+      <h3>Beverage</h3>
+      <label>Pick your morning beverage:
+        <select id="beverageSelect">
+          <option value="Coffee">Coffee</option>
+          <option value="Tea">Tea</option>
+          <option value="Orange Juice">Orange Juice</option>
+          <option value="Water">Water</option>
+        </select>
+      </label>
+      <div class="beverage-result" id="beverageResult"></div>
+    </div>
+
+    <div class="column" id="stickerCol">
+      <h3>Add a Sticker</h3>
+      <div class="sticker-wrap" id="stickerWrap">
+        <span style="font-size: 60px;">🌞</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>@zackbonner</footer>
+</div>
+
+<script>
+  const speechCol = document.getElementById("speechCol");
+  const speechBubble = document.getElementById("speechBubble");
+
+  speechCol.addEventListener("click", () => {
+    if (speechBubble.style.display === "block") {
+      speechBubble.style.display = "none";
+    } else {
+      speechBubble.style.display = "block";
+    }
+  });
+
+  const beverageSelect = document.getElementById("beverageSelect");
+  const beverageResult = document.getElementById("beverageResult");
+
+  beverageSelect.addEventListener("change", () => {
+    const choice = beverageSelect.value;
+    beverageResult.textContent = choice + ": Nice Choice!";
+  });
+
+  const stickerWrap = document.getElementById("stickerWrap");
+
+  stickerWrap.addEventListener("click", () => {
+    const sticker = document.createElement("span");
+    sticker.className = "sticker";
+    sticker.textContent = "⭐";
+    stickerWrap.appendChild(sticker);
+  });
+</script>
+
+</body>
+</html>
