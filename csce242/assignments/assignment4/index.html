@@ -53,10 +53,7 @@
     font-size: 13px;
     color: #888;
   }
-
-  /* speech bubble */
   .speech-bubble {
-    display: none;
     position: relative;
     background-color: #fff;
     border: 1px solid #333;
@@ -76,15 +73,11 @@
     border-style: solid;
     border-color: #333 transparent transparent transparent;
   }
-
-  /* beverage */
   .beverage-result {
     margin-top: 10px;
     font-weight: bold;
     color: #4f6df5;
   }
-
-  /* sticker */
   .sticker-wrap {
     position: relative;
     display: inline-block;
@@ -96,7 +89,9 @@
     left: -5px;
     font-size: 22px;
   }
-
+  .hidden {
+    display: none;
+  }
   @media (max-width: 640px) {
     .columns {
       flex-direction: column;
@@ -111,27 +106,27 @@
   <h2>Introduction to JavaScript</h2>
 
   <div class="columns">
-    <div class="column" id="speechCol">
+    <div class="column" id="speech-col">
       <h3>Speech</h3>
-      <div class="speech-bubble" id="speechBubble">Hi</div>
+      <div class="speech-bubble hidden" id="speech-bubble">Hi</div>
     </div>
 
     <div class="column">
       <h3>Beverage</h3>
       <label>Pick your morning beverage:
-        <select id="beverageSelect">
+        <select id="beverage-select">
           <option value="Coffee">Coffee</option>
           <option value="Tea">Tea</option>
           <option value="Orange Juice">Orange Juice</option>
           <option value="Water">Water</option>
         </select>
       </label>
-      <div class="beverage-result" id="beverageResult"></div>
+      <div class="beverage-result" id="beverage-result"></div>
     </div>
 
-    <div class="column" id="stickerCol">
+    <div class="column" id="sticker-col">
       <h3>Add a Sticker</h3>
-      <div class="sticker-wrap" id="stickerWrap">
+      <div class="sticker-wrap" id="sticker-wrap">
         <span style="font-size: 60px;">🌞</span>
       </div>
     </div>
@@ -141,33 +136,27 @@
 </div>
 
 <script>
-  const speechCol = document.getElementById("speechCol");
-  const speechBubble = document.getElementById("speechBubble");
+  let toggleSpeech = () => {
+    document.getElementById("speech-bubble").classList.toggle("hidden");
+  };
 
-  speechCol.addEventListener("click", () => {
-    if (speechBubble.style.display === "block") {
-      speechBubble.style.display = "none";
-    } else {
-      speechBubble.style.display = "block";
-    }
-  });
+  let showBeverage = () => {
+    let choice = document.getElementById("beverage-select").value;
+    document.getElementById("beverage-result").textContent = choice + ": Nice Choice!";
+  };
 
-  const beverageSelect = document.getElementById("beverageSelect");
-  const beverageResult = document.getElementById("beverageResult");
-
-  beverageSelect.addEventListener("change", () => {
-    const choice = beverageSelect.value;
-    beverageResult.textContent = choice + ": Nice Choice!";
-  });
-
-  const stickerWrap = document.getElementById("stickerWrap");
-
-  stickerWrap.addEventListener("click", () => {
-    const sticker = document.createElement("span");
+  let addSticker = () => {
+    let sticker = document.createElement("span");
     sticker.className = "sticker";
     sticker.textContent = "⭐";
-    stickerWrap.appendChild(sticker);
-  });
+    document.getElementById("sticker-wrap").appendChild(sticker);
+  };
+
+  window.onload = () => {
+    document.getElementById("speech-col").onclick = toggleSpeech;
+    document.getElementById("beverage-select").onchange = showBeverage;
+    document.getElementById("sticker-wrap").onclick = addSticker;
+  };
 </script>
 
 </body>
