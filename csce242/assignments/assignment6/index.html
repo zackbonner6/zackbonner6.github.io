@@ -75,12 +75,11 @@
     .nav-links {
       flex-direction: column;
       gap: 0;
-      display: none;
       margin-top: 10px;
     }
 
-    .nav-links.open {
-      display: flex;
+    .nav-links.nav-hidden {
+      display: none;
     }
 
     .nav-links li:not(:last-child)::after {
@@ -161,7 +160,7 @@
     <span class="nav-title">Assignment 6</span>
     <button id="nav-toggle">&#9660;</button>
   </div>
-  <ul class="nav-links" id="navLinks">
+  <ul class="nav-links nav-hidden" id="nav-links">
     <li><a id="link-ex1">Exercise 1</a></li>
     <li><a id="link-ex2">Exercise 2</a></li>
   </ul>
@@ -172,8 +171,8 @@
   <section id="exercise1">
     <h1>Missing Class Points Deduction</h1>
     <div class="field">
-      <label for="daysMissed">How many days do you intend to miss class?</label>
-      <input type="number" id="daysMissed" min="0">
+      <label for="days-missed">How many days do you intend to miss class?</label>
+      <input type="number" id="days-missed" min="0">
     </div>
     <button class="calc-btn" id="calcBtn1">Calculate</button>
     <p class="result" id="result1"></p>
@@ -189,67 +188,54 @@
 </main>
 
 <script>
-  const navToggle = document.getElementById("nav-toggle");
-  const navLinks = document.getElementById("navLinks");
-
-  navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-    if (navLinks.classList.contains("open")) {
-      navToggle.innerHTML = "&#9650;";
+  let toggleNav = () => {
+    document.getElementById("nav-links").classList.toggle("nav-hidden");
+    if (document.getElementById("nav-links").classList.contains("nav-hidden")) {
+      document.getElementById("nav-toggle").innerHTML = "&#9660;";
     } else {
-      navToggle.innerHTML = "&#9660;";
+      document.getElementById("nav-toggle").innerHTML = "&#9650;";
     }
-  });
+  };
 
-  const exercise1 = document.getElementById("exercise1");
-  const exercise2 = document.getElementById("exercise2");
-  const linkEx1 = document.getElementById("link-ex1");
-  const linkEx2 = document.getElementById("link-ex2");
+  let showExercise1 = () => {
+    document.getElementById("exercise1").classList.remove("hidden");
+    document.getElementById("exercise2").classList.add("hidden");
+  };
 
-  linkEx1.addEventListener("click", () => {
-    exercise1.classList.remove("hidden");
-    exercise2.classList.add("hidden");
-  });
+  let showExercise2 = () => {
+    document.getElementById("exercise2").classList.remove("hidden");
+    document.getElementById("exercise1").classList.add("hidden");
+  };
 
-  linkEx2.addEventListener("click", () => {
-    exercise2.classList.remove("hidden");
-    exercise1.classList.add("hidden");
-  });
+  let calcExercise1 = () => {
+    let daysInput = document.getElementById("days-missed").value;
+    let days = Number(daysInput);
+    let totalClasses = 25;
+    let attendanceWeight = 7;
 
-  const calcBtn1 = document.getElementById("calcBtn1");
-  const result1 = document.getElementById("result1");
-
-  calcBtn1.addEventListener("click", () => {
-    const days = Number(document.getElementById("daysMissed").value);
-    const totalClasses = 25;
-    const attendanceWeight = 7;
-
-    if (isNaN(days) || document.getElementById("daysMissed").value === "") {
-      result1.textContent = "Please enter a number of days.";
+    if (daysInput === "" || isNaN(days)) {
+      document.getElementById("result1").textContent = "Please enter a number of days.";
       return;
     }
 
-    const percentLost = (days / totalClasses) * attendanceWeight;
-    const rounded = percentLost.toFixed(2);
+    let percentLost = (days / totalClasses) * attendanceWeight;
+    let rounded = percentLost.toFixed(2);
 
     if (days <= 0) {
-      result1.textContent = "You aren't missing any class. You'll keep the full 7% attendance grade!";
+      document.getElementById("result1").textContent = "You aren't missing any class. You'll keep the full 7% attendance grade!";
     } else if (days <= 2) {
-      result1.textContent = "Missing " + days + " day(s) will only cost you " + rounded + "% of your grade. Not bad at all.";
+      document.getElementById("result1").textContent = "Missing " + days + " day(s) will only cost you " + rounded + "% of your grade. Not bad at all.";
     } else if (days <= 5) {
-      result1.textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. Try not to miss much more.";
+      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. Try not to miss much more.";
     } else if (days <= 10) {
-      result1.textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That's starting to add up.";
+      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That's starting to add up.";
     } else {
-      result1.textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That is a lot of missed class!";
+      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That is a lot of missed class!";
     }
-  });
+  };
 
-  const calcBtn2 = document.getElementById("calcBtn2");
-  const result2 = document.getElementById("result2");
-
-  calcBtn2.addEventListener("click", () => {
-    const today = new Date();
+  let calcExercise2 = () => {
+    let today = new Date();
     let year = today.getFullYear();
     let lastDay = new Date(year, 11, 4);
 
@@ -257,21 +243,29 @@
       lastDay = new Date(year + 1, 11, 4);
     }
 
-    const msPerDay = 1000 * 60 * 60 * 24;
-    const daysLeft = Math.ceil((lastDay - today) / msPerDay);
+    let msPerDay = 1000 * 60 * 60 * 24;
+    let daysLeft = Math.ceil((lastDay - today) / msPerDay);
 
     if (daysLeft <= 0) {
-      result2.textContent = "Today is the last day of class! You made it!";
+      document.getElementById("result2").textContent = "Today is the last day of class! You made it!";
     } else if (daysLeft <= 7) {
-      result2.textContent = "Only " + daysLeft + " day(s) left! You're in the final stretch, keep pushing!";
+      document.getElementById("result2").textContent = "Only " + daysLeft + " day(s) left! You're in the final stretch, keep pushing!";
     } else if (daysLeft <= 30) {
-      result2.textContent = "" + daysLeft + " day(s) left in the semester. The end is getting close!";
+      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left in the semester. The end is getting close!";
     } else if (daysLeft <= 60) {
-      result2.textContent = "" + daysLeft + " day(s) left. You're past the halfway point, keep it up!";
+      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left. You're past the halfway point, keep it up!";
     } else {
-      result2.textContent = "" + daysLeft + " day(s) left in the semester. Plenty of time, stay on track!";
+      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left in the semester. Plenty of time, stay on track!";
     }
-  });
+  };
+
+  window.onload = () => {
+    document.getElementById("nav-toggle").onclick = toggleNav;
+    document.getElementById("link-ex1").onclick = showExercise1;
+    document.getElementById("link-ex2").onclick = showExercise2;
+    document.getElementById("calcBtn1").onclick = calcExercise1;
+    document.getElementById("calcBtn2").onclick = calcExercise2;
+  };
 </script>
 
 </body>
