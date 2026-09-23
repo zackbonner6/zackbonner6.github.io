@@ -171,15 +171,15 @@
       <label for="days-missed">How many days do you intend to miss class?</label>
       <input type="number" id="days-missed" min="0">
     </div>
-    <button class="calc-btn" id="calcBtn1">Calculate</button>
-    <p class="result" id="result1"></p>
+    <button class="calc-btn" id="calc-btn1">Calculate</button>
+    <p class="result" id="result1-msg"></p>
   </section>
 
   <section id="exercise2" class="hidden">
     <h1>End of Semester Counter</h1>
     <p>Find out how many days of class you have left this semester.</p>
-    <button class="calc-btn" id="calcBtn2">Calculate My Days Left</button>
-    <p class="result" id="result2"></p>
+    <button class="calc-btn" id="calc-btn2">Calculate My Days Left</button>
+    <p class="result" id="result2-msg"></p>
   </section>
 
 </main>
@@ -211,7 +211,7 @@
     let attendanceWeight = 7;
 
     if (daysInput === "" || isNaN(days)) {
-      document.getElementById("result1").textContent = "Please enter a number of days.";
+      document.getElementById("result1-msg").textContent = "Please enter a number of days.";
       return;
     }
 
@@ -219,15 +219,15 @@
     let rounded = percentLost.toFixed(2);
 
     if (days <= 0) {
-      document.getElementById("result1").textContent = "You aren't missing any class. You'll keep the full 7% attendance grade!";
+      document.getElementById("result1-msg").textContent = "You aren't missing any class. You'll keep the full 7% attendance grade!";
     } else if (days <= 2) {
-      document.getElementById("result1").textContent = "Missing " + days + " day(s) will only cost you " + rounded + "% of your grade. Not bad at all.";
+      document.getElementById("result1-msg").textContent = "Missing " + days + " day(s) will only cost you " + rounded + "% of your grade. Not bad at all.";
     } else if (days <= 5) {
-      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. Try not to miss much more.";
+      document.getElementById("result1-msg").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. Try not to miss much more.";
     } else if (days <= 10) {
-      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That's starting to add up.";
+      document.getElementById("result1-msg").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That's starting to add up.";
     } else {
-      document.getElementById("result1").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That is a lot of missed class!";
+      document.getElementById("result1-msg").textContent = "Missing " + days + " day(s) will cost you " + rounded + "% of your grade. That is a lot of missed class!";
     }
   };
 
@@ -244,15 +244,15 @@
     let daysLeft = Math.ceil((lastDay - today) / msPerDay);
 
     if (daysLeft <= 0) {
-      document.getElementById("result2").textContent = "Today is the last day of class! You made it!";
+      document.getElementById("result2-msg").textContent = "Today is the last day of class! You made it!";
     } else if (daysLeft <= 7) {
-      document.getElementById("result2").textContent = "Only " + daysLeft + " day(s) left! You're in the final stretch, keep pushing!";
+      document.getElementById("result2-msg").textContent = "Only " + daysLeft + " day(s) left! You're in the final stretch, keep pushing!";
     } else if (daysLeft <= 30) {
-      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left in the semester. The end is getting close!";
+      document.getElementById("result2-msg").textContent = "" + daysLeft + " day(s) left in the semester. The end is getting close!";
     } else if (daysLeft <= 60) {
-      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left. You're past the halfway point, keep it up!";
+      document.getElementById("result2-msg").textContent = "" + daysLeft + " day(s) left. You're past the halfway point, keep it up!";
     } else {
-      document.getElementById("result2").textContent = "" + daysLeft + " day(s) left in the semester. Plenty of time, stay on track!";
+      document.getElementById("result2-msg").textContent = "" + daysLeft + " day(s) left in the semester. Plenty of time, stay on track!";
     }
   };
 
@@ -260,8 +260,8 @@
     document.getElementById("nav-toggle").onclick = toggleNav;
     document.getElementById("link-ex1").onclick = showExercise1;
     document.getElementById("link-ex2").onclick = showExercise2;
-    document.getElementById("calcBtn1").onclick = calcExercise1;
-    document.getElementById("calcBtn2").onclick = calcExercise2;
+    document.getElementById("calc-btn1").onclick = calcExercise1;
+    document.getElementById("calc-btn2").onclick = calcExercise2;
   };
 </script>
 
