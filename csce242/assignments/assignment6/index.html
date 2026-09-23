@@ -185,7 +185,7 @@
 </main>
 
 <script>
-  let toggleNav = () => {
+  const toggleNav = () => {
     document.getElementById("nav-links").classList.toggle("nav-hidden");
     if (document.getElementById("nav-links").classList.contains("nav-hidden")) {
       document.getElementById("nav-toggle").innerHTML = "&#9660;";
@@ -194,17 +194,17 @@
     }
   };
 
-  let showExercise1 = () => {
+  const showExercise1 = () => {
     document.getElementById("exercise1").classList.remove("hidden");
     document.getElementById("exercise2").classList.add("hidden");
   };
 
-  let showExercise2 = () => {
+  const showExercise2 = () => {
     document.getElementById("exercise2").classList.remove("hidden");
     document.getElementById("exercise1").classList.add("hidden");
   };
 
-  let calcExercise1 = () => {
+  const calcExercise1 = () => {
     let daysInput = document.getElementById("days-missed").value;
     let days = Number(daysInput);
     let totalClasses = 25;
@@ -231,7 +231,7 @@
     }
   };
 
-  let calcExercise2 = () => {
+  const calcExercise2 = () => {
     let today = new Date();
     let year = today.getFullYear();
     let lastDay = new Date(year, 11, 4);

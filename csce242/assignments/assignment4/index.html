@@ -136,16 +136,16 @@
 </div>
 
 <script>
-  let toggleSpeech = () => {
+  const toggleSpeech = () => {
     document.getElementById("speech-bubble").classList.toggle("hidden");
   };
 
-  let showBeverage = () => {
+  const showBeverage = () => {
     let choice = document.getElementById("beverage-select").value;
     document.getElementById("beverage-result").textContent = choice + ": Nice Choice!";
   };
 
-  let addSticker = () => {
+  const addSticker = () => {
     let sticker = document.createElement("span");
     sticker.className = "sticker";
     sticker.textContent = "⭐";
