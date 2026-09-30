@@ -133,6 +133,7 @@
     let list = document.getElementById("destination-list");
     list.innerHTML = "";
     document.getElementById("map-wrap").innerHTML = "";
+    let numDestinations = Object.keys(destinations).length;
 
     Object.keys(destinations).forEach((name) => {
       let item = document.createElement("li");
@@ -150,6 +151,7 @@
 
   window.onload = () => {
     document.getElementById("btn-mountains").onclick = () => {
+      console.log("showing mountains");
       showDestinations(mountainDestinations);
     };
     document.getElementById("btn-beaches").onclick = () => {

@@ -616,7 +616,7 @@ main {
 }
 
 .team-header .team-record {
-    color: var(--accent-orange);
+    color: #E8571F;
     font-weight: bold;
     margin: 0 0 4px 0;
 }

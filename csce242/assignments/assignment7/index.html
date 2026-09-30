@@ -34,7 +34,7 @@
     color: #4c7a3f;
     font-size: 18px;
   }
-  /* Dashed center line made with a repeating-linear-gradient, technique adapted from a CSS-Tricks striped background example */
+  /* dashed line - repeating-linear-gradient, got the idea from css-tricks */
   .road {
     position: relative;
     height: 320px;
@@ -129,6 +129,7 @@
   window.onload = () => {
     let road = document.getElementById("road");
     let carCount = Math.floor(Math.random() * 4) + 5;
+    console.log("generating " + carCount + " cars");
 
     for (let i = 0; i < carCount; i++) {
       let lane = Math.random() < 0.5 ? 40 + Math.random() * 30 : 210 + Math.random() * 30;
