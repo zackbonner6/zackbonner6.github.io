@@ -249,7 +249,7 @@ a {
     color: var(--muted);
 }
 
-/* Stack down for tablets */
+/* Tablets */
 @media (max-width: 1000px) {
 
     #feature-cards {
@@ -266,7 +266,7 @@ a {
     }
 }
 
-/* Stack down for small tablets / large phones */
+/* Small screens */
 @media (max-width: 760px) {
 
     #nav {
