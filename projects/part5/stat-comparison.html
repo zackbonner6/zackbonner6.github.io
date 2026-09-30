@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fourth &amp; Stats - Stat Comparison Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-brand">Fourth &amp; Stats</div>
+        <button id="nav-toggle">&#9776;</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="team-stats.html">Team Stats &amp; Rankings</a></li>
+            <li><a href="player-leaderboards.html">Player Leaderboards</a></li>
+            <li><a href="standings-schedule.html">Standings &amp; Schedule</a></li>
+            <li><a href="stat-comparison.html" class="active">Stat Comparison Tool</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Stat Comparison Tool</h1>
+        <p>Put any two players side by side.</p>
+    </div>
+
+    <main>
+        <div class="comparison-cards">
+            <div class="player-card">
+                <div class="avatar-placeholder"></div>
+                <h3>Marcus Hale</h3>
+                <span class="player-select">Select a player</span>
+            </div>
+
+            <div class="vs-label">VS</div>
+
+            <div class="player-card">
+                <div class="avatar-placeholder"></div>
+                <h3>Evan Sutter</h3>
+                <span class="player-select">Select a player</span>
+            </div>
+        </div>
+
+        <table class="data-table comparison-table">
+            <thead>
+                <tr>
+                    <th>Marcus Hale</th>
+                    <th>Stat</th>
+                    <th>Evan Sutter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stat-win">3,412</td>
+                    <td>Passing Yards</td>
+                    <td>3,305</td>
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>Touchdowns</td>
+                    <td class="stat-win">31</td>
+                </tr>
+                <tr>
+                    <td class="stat-win">298</td>
+                    <td>Completions</td>
+                    <td>287</td>
+                </tr>
+                <tr>
+                    <td class="stat-win">67.4%</td>
+                    <td>Completion %</td>
+                    <td>65.9%</td>
+                </tr>
+                <tr>
+                    <td class="stat-win">7</td>
+                    <td>Interceptions</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td class="stat-win">108.2</td>
+                    <td>Passer Rating</td>
+                    <td>101.6</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer id="footer">
+        <p>Fourth and Stats</p>
+        <p class="copyright">&copy; 2026 Zack Bonner</p>
+    </footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
