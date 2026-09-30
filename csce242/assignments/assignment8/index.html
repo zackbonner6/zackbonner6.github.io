@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 8 - JavaScript: Arrays</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #eef6f6;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    background-color: #ffffff;
+    border: 2px solid #bfe0df;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  h1 {
+    margin: 0 0 4px 0;
+    color: #1c4a48;
+  }
+  h2 {
+    margin: 0 0 20px 0;
+    color: #2f8f89;
+    font-size: 18px;
+  }
+  .type-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  .type-buttons button {
+    background-color: #2f8f89;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .type-buttons button:hover {
+    background-color: #226b66;
+  }
+  .destination-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    min-height: 20px;
+  }
+  .destination-list li a {
+    display: inline-block;
+    background-color: #f2b134;
+    color: #1c4a48;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  .destination-list li a:hover {
+    background-color: #d99a1f;
+  }
+  .map-wrap iframe {
+    border-radius: 8px;
+  }
+  footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Assignment 8</h1>
+  <h2>JavaScript: Arrays</h2>
+
+  <div class="type-buttons">
+    <button id="btn-mountains">Mountains</button>
+    <button id="btn-beaches">Beaches</button>
+  </div>
+
+  <ul class="destination-list" id="destination-list"></ul>
+
+  <div class="map-wrap" id="map-wrap"></div>
+
+  <footer>@zackbonner</footer>
+</div>
+
+<script>
+  const mountainDestinations = {
+    "Denali": "Denali National Park, Alaska",
+    "Mount Rainier": "Mount Rainier National Park, Washington",
+    "Rocky Mountain": "Rocky Mountain National Park, Colorado",
+    "Great Smoky Mountains": "Great Smoky Mountains National Park, Tennessee"
+  };
+
+  const beachDestinations = {
+    "Clearwater Beach": "Clearwater Beach, Florida",
+    "Waikiki Beach": "Waikiki Beach, Honolulu, Hawaii",
+    "Myrtle Beach": "Myrtle Beach, South Carolina",
+    "Santa Monica Beach": "Santa Monica Beach, California"
+  };
+
+  const showMap = (location) => {
+    let mapWrap = document.getElementById("map-wrap");
+    mapWrap.innerHTML = "";
+
+    let iframe = document.createElement("iframe");
+    iframe.src = "https://maps.google.com/maps?q=" + encodeURIComponent(location) + "&output=embed";
+    iframe.width = "100%";
+    iframe.height = "350";
+    iframe.style.border = "0";
+    mapWrap.appendChild(iframe);
+  };
+
+  const showDestinations = (destinations) => {
+    let list = document.getElementById("destination-list");
+    list.innerHTML = "";
+    document.getElementById("map-wrap").innerHTML = "";
+
+    Object.keys(destinations).forEach((name) => {
+      let item = document.createElement("li");
+      let link = document.createElement("a");
+      link.href = "#";
+      link.textContent = name;
+      link.onclick = (event) => {
+        event.preventDefault();
+        showMap(destinations[name]);
+      };
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+  };
+
+  window.onload = () => {
+    document.getElementById("btn-mountains").onclick = () => {
+      showDestinations(mountainDestinations);
+    };
+    document.getElementById("btn-beaches").onclick = () => {
+      showDestinations(beachDestinations);
+    };
+  };
+</script>
+
+</body>
+</html>
