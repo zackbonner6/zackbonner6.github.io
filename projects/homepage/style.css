@@ -1,0 +1,330 @@
+:root {
+    --bg-dark: #101820;
+    --bg-light: #F5F5F3;
+    --accent-green: #1B7A3D;
+    --accent-orange: #E8571F;
+    --text-light: #FFFFFF;
+    --text-dark: #1A1A1A;
+    --muted: #5C6570;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Nav */
+
+#nav {
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 40px;
+}
+
+.nav-brand {
+    color: var(--text-light);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: var(--accent-orange);
+}
+
+/* Hero */
+
+#hero {
+    position: relative;
+    background-image: linear-gradient(rgba(16, 24, 32, 0.8), rgba(16, 24, 32, 0.85)), url('https://placehold.co/1600x700?text=Stadium');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
+    padding: 80px 60px 100px 60px;
+    display: flex;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin: 0 0 20px 0;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 0 0 30px 0;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 14px 28px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+    background-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+}
+
+.btn-secondary {
+    color: var(--text-light);
+    background-color: var(--accent-green);
+    border: 2px solid var(--accent-green);
+}
+
+.btn-secondary:hover {
+    background-color: #145c2e;
+    border-color: #145c2e;
+}
+
+.callout-bubble {
+    position: absolute;
+    right: 60px;
+    bottom: -40px;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding: 16px 22px;
+    border-radius: 6px;
+    max-width: 260px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.callout-bubble h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.1em;
+}
+
+.callout-bubble p {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--muted);
+}
+
+/* Feature cards */
+
+#feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 80px 60px 40px 60px;
+    justify-content: center;
+}
+
+.feature-card {
+    flex: 1 1 240px;
+    max-width: 280px;
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--accent-green);
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.feature-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1em;
+}
+
+.feature-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* CTA band */
+
+#cta-band {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cta-photo {
+    flex: 1 1 400px;
+}
+
+.cta-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.cta-text {
+    flex: 1 1 400px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 60px;
+}
+
+.cta-text h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.8em;
+}
+
+.cta-text p {
+    margin: 0 0 24px 0;
+    line-height: 1.6;
+}
+
+.cta-text .btn-secondary {
+    align-self: flex-start;
+}
+
+/* Footer */
+
+#footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+#footer p {
+    margin: 0 0 6px 0;
+}
+
+#footer .copyright {
+    margin: 0;
+    font-size: 0.8em;
+    color: var(--muted);
+}
+
+/* Stack down for tablets */
+@media (max-width: 1000px) {
+
+    #feature-cards {
+        padding: 70px 30px 30px 30px;
+    }
+
+    .feature-card {
+        flex: 1 1 45%;
+        max-width: none;
+    }
+
+    .cta-text {
+        padding: 40px 30px;
+    }
+}
+
+/* Stack down for small tablets / large phones */
+@media (max-width: 760px) {
+
+    #nav {
+        padding: 16px 20px;
+        justify-content: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #hero {
+        flex-direction: column;
+        padding: 60px 30px 90px 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+
+    .callout-bubble {
+        position: static;
+        margin-top: 30px;
+        max-width: none;
+    }
+
+    #cta-band {
+        flex-direction: column;
+    }
+
+    .cta-photo, .cta-text {
+        flex: 1 1 auto;
+    }
+
+    .cta-photo img {
+        min-height: 220px;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 1.7em;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-primary, .btn-secondary {
+        text-align: center;
+    }
+
+    .feature-card {
+        flex: 1 1 100%;
+    }
+}
